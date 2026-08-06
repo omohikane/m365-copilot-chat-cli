@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+
+# 環境・秘密情報
+.env
+config.ini
+
+# 会話ログ・生成物（git非コミット）
+log/

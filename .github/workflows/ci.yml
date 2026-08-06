@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Compile check
+        run: uv run python -m py_compile app.py config.py copilot_agent.py logger.py code_exec.py mcp_server.py tools/dom_inspect.py
+
+      - name: CLI help smoke test
+        run: |
+          uv run python -m pip show copilot-cli >/dev/null 2>&1 || true
+          .venv/bin/copilot-cli --help

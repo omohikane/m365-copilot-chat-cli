@@ -1,0 +1,38 @@
+[project]
+name = "m365-copilot-chat-cli"
+version = "0.1.0"
+description = "Drive M365 Copilot from a CLI (REPL) reusing an already-logged-in system Chrome session"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "r1ppl3" }]
+keywords = ["copilot", "m365", "cli", "playwright", "mcp", "repl"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "mcp>=2.0.0",
+    "playwright>=1.44",
+]
+
+[project.scripts]
+copilot-cli = "app:main"
+
+[project.urls]
+# Repository = "https://github.com/<your-name>/copilot-cli"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["app", "config", "copilot_agent", "logger", "code_exec", "mcp_server"]
+
+[project.optional-dependencies]
+dev = []
