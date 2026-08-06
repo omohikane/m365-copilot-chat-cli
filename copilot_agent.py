@@ -292,7 +292,7 @@ class CopilotAgent:
         conv = self._conversation_locator()
         busy = self._first_busy_locator()
         previous = conv.inner_text(timeout=5000)
-        deadline = time.monotonic() + config.TIMEOUT_SEC
+        deadline = time.monotonic() + config.ANSWER_TIMEOUT_SEC
         stable = 0
         while time.monotonic() < deadline:
             current = conv.inner_text(timeout=5000)
@@ -309,7 +309,7 @@ class CopilotAgent:
                 stable = 0
             previous = current
             time.sleep(_POLL_INTERVAL)
-        raise RuntimeError(f"回答待ちが {config.TIMEOUT_SEC} 秒を超えました")
+        raise RuntimeError(f"回答待ちが {config.ANSWER_TIMEOUT_SEC} 秒を超えました")
 
     def _conversation_locator(self):
         assert self.page is not None

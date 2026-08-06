@@ -22,7 +22,8 @@ LOG_DIR = PROJECT_ROOT / "log"
 HEADED = True  # default is headed (to confirm login)
 
 # --- Timeouts -----------------------------------------------------------------
-TIMEOUT_SEC = 60.0  # upper bound for waiting on an answer
+TIMEOUT_SEC = 60.0  # generic timeout (page load, code exec, etc.)
+ANSWER_TIMEOUT_SEC = 300.0  # total upper bound for waiting on an answer (incl. busy)
 
 # --- Command defaults ---------------------------------------------------------
 DEFAULT_SHELL = os.environ.get("SHELL", "sh")
